@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, switchMap, throwError, map, tap } from 'rxjs';
-import { Usuario, UserTipo } from '../../models/usuario.model';
+import { Usuario, UserTipo } from '../models/usuario.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class AuthService {
    */
   registrar(
     dados: Omit<Usuario, 'id' | 'tipo'>,
-    tipo: UserTipo = 'cliente'
+    tipo: UserTipo = 'usuario'
   ): Observable<Usuario> {
     const payload: Usuario = { ...dados, tipo };
 

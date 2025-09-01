@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Imovel } from '../models/imovel.model';
+import { Imovel } from '../models/imoveis.models';
 
 @Injectable({
   providedIn: 'root',

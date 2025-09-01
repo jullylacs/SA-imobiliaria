@@ -1,0 +1,31 @@
+<nav class="navbar">
+  <a routerLink="/">Currículos e Vagas</a>
+
+  <div class="navItens">
+    <!-- Sempre visível -->
+    <a routerLink="/vagas" class="navLink">Vagas</a>
+
+    <!-- Apenas usuário comum logado -->
+    <a *ngIf="isLoggedIn() && !isAdmin()" routerLink="/curriculo-form" class="navLink">Enviar Currículo</a>
+
+    <!-- Apenas admin -->
+    <a *ngIf="isAdmin()" routerLink="/painel-vagas" class="navLink">Gerenciar Vagas</a>
+    <a *ngIf="isAdmin()" routerLink="/curriculos" class="navLink">Currículos Recebidos</a>
+    <a *ngIf="isAdmin()" routerLink="/curriculo-list" class="navLink">Lista de Currículos</a>
+
+    <!-- Área de autenticação -->
+    <ng-container *ngIf="!isLoggedIn(); else loggedMenu">
+      <a routerLink="/login" class="navLink">Login</a>
+    </ng-container>
+
+    <ng-template #loggedMenu>
+      <span class="navLink">Olá, {{ user?.nome || user?.email }}</span>
+      <button class="navLink logout-btn" (click)="logout()">
+  <i class="fa-solid fa-door-open"></i>
+</button>
+
+    </ng-template>
+  </div>
+</nav>
+
+<script src="https://kit.fontawesome.com/b28c01dff0.js" crossorigin="anonymous"></script>
